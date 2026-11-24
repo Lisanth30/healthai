@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthAI - AI Healthcare Assistant</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-[#030409] text-white font-body overflow-x-hidden">
+    <!-- Welcome Page -->
+    <div class="min-h-screen flex items-center justify-center relative overflow-hidden">
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://static.prod-images.emergentagent.com/jobs/d110c836-116f-4dd2-9d24-7582d44c9b5c/images/f1962ab23165d8afd787dab3e6bfe1f63b1ab29fc135b7d894a2cae4210dad7d.png"
+                alt="Background" class="w-full h-full object-cover fixed">
+            <div class="absolute inset-0 bg-black/60"></div>
+        </div>
+
+        <!-- Floating Medical Icon -->
+        <div class="floating-icon absolute z-10">
+            <img src="https://static.prod-images.emergentagent.com/jobs/d110c836-116f-4dd2-9d24-7582d44c9b5c/images/080ef01289af45489bac84d36bb9843b48915cb3405325c21d27b190159777d0.png"
+                alt="Medical Icon" class="w-32 h-32 md:w-48 md:h-48 opacity-20">
+        </div>
+
+        <!-- Main Content -->
+        <div class="relative z-20 text-center px-6 md:px-12 fade-in">
+            <!-- Heading -->
+            <h1 class="text-5xl md:text-7xl tracking-tighter font-semibold font-heading mb-6">
+                Welcome to <span class="gradient-text">HealthAI</span>
+            </h1>
+
+            <!-- Subtitle -->
+            <p class="text-xl md:text-2xl text-[#A0AABF] mb-8 max-w-2xl mx-auto">
+                Your Intelligent AI Healthcare Assistant
+            </p>
+
+            <!-- Typing Animation Text -->
+            <div class="mb-12 h-8">
+                <p id="typingText" class="text-lg md:text-xl text-[#0066FF] font-medium"></p>
+            </div>
+
+            <!-- CTA Button -->
+            <button data-testid="start-diagnosis-btn" onclick="navigateToLanguage()"
+                class="glow-button px-12 py-5 text-lg md:text-xl font-medium rounded-2xl bg-gradient-to-r from-[#0066FF] to-[#7B2CBF] text-white hover:shadow-[0_0_40px_rgba(0,102,255,0.8)] transition-all duration-300 transform hover:scale-105">
+                Start Diagnosis
+            </button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

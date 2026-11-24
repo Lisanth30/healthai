@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthAI Chatbot</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-[#030409] text-white font-body overflow-hidden">
+    <div class="flex h-screen">
+        <!-- Sidebar (Desktop only) -->
+        <aside class="hidden md:flex flex-col w-80 crystal-glass border-r border-white/10 p-6">
+            <!-- Logo -->
+            <div class="mb-8">
+                <h1 class="text-2xl font-semibold font-heading gradient-text">HealthAI</h1>
+                <p class="text-sm text-[#A0AABF] mt-1" id="selectedLanguage">Language: English</p>
+            </div>
+
+            <!-- New Chat Button -->
+            <button data-testid="new-chat-btn" onclick="startNewChat()"
+                class="glow-button w-full px-6 py-3 rounded-xl bg-gradient-to-r from-[#0066FF] to-[#7B2CBF] text-white font-medium hover:shadow-[0_0_20px_rgba(0,102,255,0.6)] transition-all duration-300 mb-6 flex items-center justify-center gap-2">
+                <i data-lucide="plus" class="w-5 h-5"></i>
+                New Chat
+            </button>
+
+            <!-- Chat History -->
+            <div class="flex-1 overflow-y-auto">
+                <h3 class="text-sm font-medium text-[#A0AABF] mb-4 uppercase tracking-wider">Chat History</h3>
+                <div class="space-y-2" id="chatHistory">
+                    <div class="p-3 rounded-lg bg-white/5 hover:bg-white/10 cursor-pointer transition-colors text-sm">
+                        <p class="text-white font-medium truncate">Fever and headache</p>
+                        <p class="text-[#A0AABF] text-xs mt-1">2 mins ago</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Chat Area -->
+        <main class="flex-1 flex flex-col">
+            <!-- Header (Mobile) -->
+            <header class="md:hidden flex items-center justify-between p-4 border-b border-white/10 crystal-glass">
+                <h1 class="text-xl font-semibold font-heading gradient-text">HealthAI</h1>
+                <button onclick="startNewChat()" class="p-2 rounded-lg bg-white/5 hover:bg-white/10 transition-colors">
+                    <i data-lucide="plus" class="w-5 h-5"></i>
+                </button>
+            </header>
+
+            <!-- Chat Messages Container -->
+            <div id="chatContainer" class="flex-1 overflow-y-auto p-6 md:p-8 space-y-6">
+                <!-- Welcome Message -->
+                <div class="flex justify-start">
+                    <div class="ai-bubble max-w-2xl">
+                        <div class="flex items-start gap-3">
+                            <div
+                                class="w-10 h-10 rounded-full bg-gradient-to-r from-[#0066FF] to-[#7B2CBF] flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="bot" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <p class="text-base leading-relaxed">
+                                    Hello! I'm HealthAI, your intelligent healthcare assistant. Please describe your
+                                    symptoms, and I'll help analyze them. For example: "fever, cough, headache"
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Input Area -->
+            <div class="border-t border-white/10 p-4 md:p-6 crystal-glass">
+                <form id="chatForm" class="max-w-4xl mx-auto" onsubmit="sendMessage(event)">
+                    <div class="flex gap-3 items-end">
+                        <!-- Input Field -->
+                        <div class="flex-1 relative">
+                            <input type="text" id="symptomInput" data-testid="symptom-input"
+                                placeholder="Enter your symptoms (e.g., fever, cough, headache)"
+                                class="w-full px-6 py-4 rounded-2xl input-glass text-white placeholder-[#A0AABF] focus:outline-none text-base"
+                                autocomplete="off">
+                        </div>
+
+                        <!-- Microphone Button -->
+                        <button type="button" data-testid="microphone-btn"
+                            class="p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-colors flex-shrink-0">
+                            <i data-lucide="mic" class="w-6 h-6"></i>
+                        </button>
+
+                        <!-- Send Button -->
+                        <button type="submit" data-testid="send-message-btn"
+                            class="px-6 py-4 rounded-xl bg-gradient-to-r from-[#0066FF] to-[#7B2CBF] text-white font-medium hover:shadow-[0_0_20px_rgba(0,102,255,0.6)] transition-all duration-300 flex-shrink-0">
+                            <i data-lucide="send" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Load selected language
+        const language = localStorage.getItem('selectedLanguage') || 'English';
+        const langDisplay = document.getElementById('selectedLanguage');
+        if (langDisplay) {
+            langDisplay.textContent = `Language: ${language}`;
+        }
+    </script>
+</body>
+
+</html>
